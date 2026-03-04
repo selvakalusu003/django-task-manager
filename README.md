@@ -10,7 +10,7 @@ This project was built to practice **Django fundamentals, authentication, filter
 ## 🚀 Live Demo
 
 Live Application:
-https://django-task-manager.onrender.com
+https://django-task-manager-kned.onrender.com
 
 GitHub Repository:
 https://github.com/selvakalusu003/django-task-manager
@@ -19,18 +19,18 @@ https://github.com/selvakalusu003/django-task-manager
 
 ## ✨ Features
 
-* User Registration
-* User Login / Logout
-* Create Tasks
-* Update Tasks
-* Delete Tasks
-* Mark Tasks as Complete
-* Task Filtering
-* Task Search
-* Bootstrap UI
-* Django Messages Framework
-* Authentication-based task access
-
+- User registration and authentication
+- Secure login and logout system
+- Create new tasks
+- Update existing tasks
+- Delete tasks
+- Mark tasks as completed
+- Task filtering (All / Pending / Completed)
+- Task search functionality
+- Responsive UI using Bootstrap
+- Django Messages Framework for user feedback
+- Authentication-based task access
+  
 ---
 
 ## 🛠 Tech Stack
@@ -52,26 +52,26 @@ https://github.com/selvakalusu003/django-task-manager
 django-task-manager
 │
 ├── task_manager
-│   ├── task_manager
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   │
-│   ├── tasks
-│   │   ├── models.py
-│   │   ├── views.py
-│   │   ├── forms.py
-│   │   └── urls.py
-│   │
-│   ├── templates
-│   │   ├── base.html
-│   │   ├── login.html
-│   │   ├── register.html
-│   │   ├── task_list.html
-│   │   ├── task_form.html
-│   │   └── task_confirm_delete.html
-│   │
-│   └── manage.py
+│ ├── task_manager
+│ │ ├── settings.py
+│ │ ├── urls.py
+│ │ └── wsgi.py
+│ │
+│ ├── tasks
+│ │ ├── models.py
+│ │ ├── views.py
+│ │ ├── forms.py
+│ │ └── urls.py
+│ │
+│ ├── templates
+│ │ ├── base.html
+│ │ ├── login.html
+│ │ ├── register.html
+│ │ ├── task_list.html
+│ │ ├── task_form.html
+│ │ └── task_confirm_delete.html
+│ │
+│ └── manage.py
 │
 ├── requirements.txt
 ├── build.sh
@@ -140,6 +140,24 @@ http://127.0.0.1:8000
 
 ---
 
+## ☁️ Deployment
+
+This application is deployed on **Render**.
+
+### Build Command
+
+```
+pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput
+```
+
+### Start Command
+
+```
+python manage.py runserver 0.0.0.0:$PORT
+```
+
+---
+
 ## 🧠 Challenges Faced
 
 * Configuring Django authentication system
@@ -158,6 +176,16 @@ http://127.0.0.1:8000
 * Filtering and searching data
 * Deploying Django applications using Render
 * Git & GitHub workflow
+
+---
+
+## 🔮 Future Improvements
+
+- User-specific task ownership
+- Task priority levels (Low / Medium / High)
+- Pagination for large task lists
+- REST API using Django REST Framework
+- PostgreSQL database for production
 
 ---
 
