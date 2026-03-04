@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">My Tasks</h2>
+
+<form method="GET" class="mb-3 d-flex">
+    <input class="form-control me-2" type="text" name="search" placeholder="Search tasks..." value="{{ request.GET.search }}">
+    <button class="btn btn-primary">Search</button>
+</form>
+
+<div class="mb-3">
+    <a class="btn btn-secondary btn-sm" href="/">All</a>
+    <a class="btn btn-warning btn-sm" href="/?status=pending">Pending</a>
+    <a class="btn btn-success btn-sm" href="/?status=completed">Completed</a>
+</div>
+
+<a href="{% url 'task-create' %}" class="btn btn-primary mb-4">Create Task</a>
+
+{% for task in tasks %}
+
+<div class="card mb-3 shadow-sm">
+    <div class="card-body">
+
+        <h5 class="card-title">{{ task.title }}</h5>
+
+        <p class="card-text">{{ task.description }}</p>
+
+        <p>
+            Status:
+            {% if task.status == "completed" %}
+                <span class="badge bg-success">Completed</span>
+            {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+            {% endif %}
+        </p>
+
+        <p>Due: {{ task.due_date }}</p>
+
+        <a href="{% url 'task-update' task.pk %}" class="btn btn-sm btn-info">Edit</a>
+        <a href="{% url 'task-delete' task.pk %}" class="btn btn-sm btn-danger">Delete</a>
+
+        {% if task.status != "completed" %}
+        <a href="{% url 'task-complete' task.pk %}" class="btn btn-sm btn-success">
+            Mark Complete
+        </a>
+        {% endif %}
+
+    </div>
+</div>
+
+{% empty %}
+
+<div class="alert alert-info">
+    No tasks found.
+</div>
+
+{% endfor %}
+
+<div class="mt-4 text-start">
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button class="btn btn-dark">Logout</button>
+</form>
+</div>
+
+{% endblock %}
